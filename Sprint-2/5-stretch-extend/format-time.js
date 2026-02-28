@@ -7,8 +7,12 @@ function formatAs12HourClock(time) {
   if (hours > 12) {
     return `${hours - 12}:00 pm`;
   }
+  if (hours === 0) {
+    return `${12}:00 am`;
+  }
   return `${time} am`;
 }
+console.log("formatAs12HourClock",formatAs12HourClock("17:00"))
 
 const currentOutput = formatAs12HourClock("08:00");
 const targetOutput = "08:00 am";
@@ -23,3 +27,34 @@ console.assert(
   currentOutput2 === targetOutput2,
   `current output: ${currentOutput2}, target output: ${targetOutput2}`
 );
+
+const currentOutput3 = formatAs12HourClock("00:00");
+const targetOutput3 = "12:00 am";
+console.assert(
+  currentOutput3 === targetOutput3,
+  `current output: ${currentOutput3}, target output: ${targetOutput3}`
+);
+
+const currentOutput4 = formatAs12HourClock("00:00");
+const targetOutput4 = "12:00 pm";
+console.assert(
+  currentOutput4 === targetOutput4,
+  `current output: ${currentOutput4}, target output: ${targetOutput4}`
+);
+
+const currentOutput5 = formatAs12HourClock("20:30");
+const targetOutput5 = "08:30 am";
+console.assert(
+  currentOutput5 === targetOutput5,
+  `current output: ${currentOutput5}, target output: ${targetOutput5}`
+);
+
+const currentOutput6 = formatAs12HourClock("23:55");
+const targetOutput6 = "11:55 am";
+console.assert(
+  currentOutput6 === targetOutput6,
+  `current output: ${currentOutput6}, target output: ${targetOutput6}`
+);
+// test mid-day 
+// test 08:30
+// test 11:55
