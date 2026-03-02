@@ -5,17 +5,29 @@
 
 // You should call this function a number of times to check it works for different inputs
 
-let count = 0;
 
-count = count + 1;
+function toPounds(penceString) {
+      
+const penceStringWithoutTrailingP = penceString.substring(
+  0,
+  penceString.length - 1
+);
 
-function toPounds(pennies) {
-    let pounds = pennies / 100;
-    return pounds;
+const paddedPenceNumberString = penceStringWithoutTrailingP.padStart(3, "0");
+const pounds = paddedPenceNumberString.substring(
+  0,
+  paddedPenceNumberString.length - 2
+);
+
+const pence = paddedPenceNumberString
+  .substring(paddedPenceNumberString.length - 2)
+  .padEnd(2, "0");
+
+  return `£${pounds}.${pence}`
 }
 
-console.log(toPounds(50));
-console.log(toPounds(100));
-console.log(toPounds(150));
-console.log(toPounds(250));
-console.log(toPounds(350));
+console.log(toPounds("50p"));
+console.log(toPounds("103p"));
+console.log(toPounds("155p"));
+console.log(toPounds("5043p"));
+console.log(toPounds("689732p"));
