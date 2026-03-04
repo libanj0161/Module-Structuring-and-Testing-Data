@@ -20,7 +20,7 @@ const  filePathArray = filePath.split("/");
 console.log("filePathArray", filePathArray);
 const lastDotIndex = filePath.lastIndexOf(".");
 
-const dir = filePathArray.slice(0,7).join("/");
+const dir = filePathArray.slice(0,-1).join("/");
 const ext = filePath.slice(lastDotIndex);
 console.log('dir', dir)
 console.log('ext', ext)
