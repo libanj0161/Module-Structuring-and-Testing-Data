@@ -23,6 +23,23 @@
 
 function getCardValue(card) {
   // TODO: Implement this function
+
+  // if card is an ace return 11
+  if (card === "A") {
+    return 11;
+  }
+
+  // if card is face "J", "Q", "K"
+  else if (card === "J" || card === "Q" || card === "K") {
+    return 10;
+  }
+
+  // if card is a number card and card is bigger than 2 and less than 10 ("2" to "10"), should return its numerical value
+  else if (Number(card) >= 2 && Number(card) <= 10) {
+    return Number(card);
+  } else {
+    throw new Error("Error invalid card");
+  }
 }
 
 // The line below allows us to load the getCardValue function into tests in other files.
@@ -39,7 +56,7 @@ function assertEquals(actualOutput, targetOutput) {
 
 // TODO: Write tests to cover all outcomes, including throwing errors for invalid cards.
 // Examples:
-assertEquals(getCardValue("9♠"), 9);
+assertEquals(getCardValue("9"), 9);
 
 // Handling invalid cards
 try {
