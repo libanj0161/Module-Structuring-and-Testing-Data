@@ -16,6 +16,32 @@
 
 function getAngleType(angle) {
   // TODO: Implement this function
+  // if angle is between 0 and 90 then return acute angle
+  if (angle > 0 && angle < 90) {
+    return "Acute angle";
+  }
+
+  // if it is exactly 90 return right angle
+  else if (angle === 90) {
+    return "Right angle";
+  }
+  // greater than 90 less than 180 return obtuse angle
+  else if (angle > 90 && angle < 180) {
+    return "Obtuse angle";
+  }
+  // if exactly 180 return straight angle
+  else if (angle === 180) {
+    return "Straight angle";
+  }
+  // greater than 180 less than 360 return reflex angle
+  else if (angle > 180 && angle < 360) {
+    return "Reflex angle";
+  }
+  // everything greater than 360 return invalid angle
+  else {
+    return "Invalid angle";
+  }
+  // return a string tells user which angle
 }
 
 // The line below allows us to load the getAngleType function into tests in other files.
