@@ -10,21 +10,21 @@ const countChar = require("./count");
 // When the function is called with these inputs,
 // Then it should correctly count occurrences of `char`.
 
-test("should count multiple occurrences of a character", () => {
+test("should count all occurrences of a character when it appears multiple times", () => {
   const str = "aaaaa";
   const char = "a";
   const count = countChar(str, char);
   expect(count).toEqual(5);
 });
 
-test("should count multiple occurrences of a character", () => {
+test("should return 1 when the character appears only once in the string", () => {
   const str = "house";
   const char = "e";
   const count = countChar(str, char);
   expect(count).toEqual(1);
 });
 
-test("should count multiple occurrences of a character", () => {
+test("should correctly count occurrences of a character appearing twice", () => {
   const str = "playful";
   const char = "l";
   const count = countChar(str, char);
