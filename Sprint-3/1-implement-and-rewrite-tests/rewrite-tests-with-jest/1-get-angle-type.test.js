@@ -37,8 +37,16 @@ test(`should return "Reflex angles" when (angle > 180 && < 360)`, () => {
   expect(getAngleType(245)).toEqual("Reflex angle");
   expect(getAngleType(306)).toEqual("Reflex angle");
 });
-// Case 6: Invalid angles
-test(`should return "Invalid angles" when (angle > 180 && < 360)`, () => {
+// Case 6: Full rotation
+test("returns full rotation for 360 degrees (angle === 360))", () => {
+  expect(getAngleType(360)).toBe("Full rotation");
+});
+// Case 7: Invalid angles
+test(`should return "Invalid angles" when (angle >360)`, () => {
   // Test various invalid angles, including boundary cases
-  expect(getAngleType(360)).toEqual("Invalid angle");
+  expect(getAngleType(400)).toEqual("Invalid angle");
+});
+// Case 8: Invalid angles
+test(`should return "Invalid angles" when (angle <0)`, () => {
+  expect(getAngleType(-7)).toBe("Invalid angle");
 });

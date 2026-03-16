@@ -22,15 +22,23 @@
 // execute the code to ensure all tests pass.
 
 function getCardValue(card) {
+  const suits = ["♠", "♥", "♦", "♣"]; // valid card suits
+
+  const suit = card.slice(-1); // gives me the last character
+  const rank = card.slice(0, -1); // gets beginning character up to (not including) the last character
+
+  if (!suits.includes(suit)) {
+    throw new Error("Error invalid card");
+  }
   // TODO: Implement this function
 
   // if card is an ace return 11
-  if (card === "A") {
+  if (card === "A♠") {
     return 11;
   }
 
   // if card is face "J", "Q", "K"
-  else if (card === "J" || card === "Q" || card === "K") {
+  else if (card === "J♣" || card === "Q♦" || card === "K♥") {
     return 10;
   }
 
@@ -56,7 +64,7 @@ function assertEquals(actualOutput, targetOutput) {
 
 // TODO: Write tests to cover all outcomes, including throwing errors for invalid cards.
 // Examples:
-assertEquals(getCardValue("9"), 9);
+assertEquals(getCardValue("9♠"), 9);
 
 // Handling invalid cards
 try {

@@ -37,7 +37,12 @@ function getAngleType(angle) {
   else if (angle > 180 && angle < 360) {
     return "Reflex angle";
   }
-  // everything greater than 360 return invalid angle
+
+  // if it is 360 then it is a full rotation
+  else if (angle === 360) {
+    return "Full rotation";
+  }
+  // everything greater than 360 rand less than 0 return invalid angle
   else {
     return "Invalid angle";
   }
@@ -61,3 +66,18 @@ function assertEquals(actualOutput, targetOutput) {
 // Example: Identify Right Angles
 const right = getAngleType(90);
 assertEquals(right, "Right angle");
+
+const acute = getAngleType(45);
+assertEquals(acute, "Acute angle");
+
+const obtuse = getAngleType(120);
+assertEquals(obtuse, "Obtuse angle");
+
+const straight = getAngleType(180);
+assertEquals(straight, "Straight angle");
+
+const reflex = getAngleType(270);
+assertEquals(reflex, "Reflex angle");
+
+const invalid = getAngleType(200);
+assertEquals(invalid, "Invalid angle");
