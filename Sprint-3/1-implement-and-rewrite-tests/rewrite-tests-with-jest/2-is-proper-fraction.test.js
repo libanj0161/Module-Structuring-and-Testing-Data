@@ -25,9 +25,11 @@ test("should return false when numerator is bigger than denominator", () => {
 
 // Case 4: Negative numbers
 // numerator or denominator is negative, but function compares absolute values
-test("should return correct result when numerator or denominator is negative", () => {
-  expect(isProperFraction(-5, 9)).toEqual(true);
+test("should return false when |numerator| < |denominator| positive numerator and negative denominator)", () => {
   expect(isProperFraction(7, -3)).toEqual(false);
+});
+test("should return true when |numerator| < |denominator| negative numerator and positive denominator)", () => {
+  expect(isProperFraction(-5, 9)).toEqual(true);
 });
 
 // Case 5: Numerator equals denominator fraction equals 1, so it is not proper

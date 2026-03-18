@@ -35,6 +35,13 @@ test(`Should return error if the card string is invalid`, () => {
   expect(() => getCardValue("17")).toThrow("Error invalid card");
 });
 
+// Case 4: Hex, Decimal Numbers
+test(`Should return error if the rank is a hex input`, () => {
+  expect(() => getCardValue("0x02♠")).toThrow("Error invalid card");
+  expect(() => getCardValue("2.1♠")).toThrow("Error invalid card");
+  expect(() => getCardValue("0002♠")).toThrow("Error invalid card");
+});
+
 // To learn how to test whether a function throws an error as expected in Jest,
 // please refer to the Jest documentation:
 // https://jestjs.io/docs/expect#tothrowerror

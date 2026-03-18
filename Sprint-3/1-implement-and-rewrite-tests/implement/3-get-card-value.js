@@ -27,7 +27,7 @@ function getCardValue(card) {
   let suit = "";
   let rank = card;
 
-  if (card.length > 1) {
+  if (suits.includes(card.slice(-1))) {
     suit = card.slice(-1); // gives me the last character and saves it in the suit variable.
     rank = card.slice(0, -1); // gets beginning character up to (not including) the last character and saves it in the rank variable.
   }
@@ -42,15 +42,16 @@ function getCardValue(card) {
   }
 
   // if card is face "J", "Q", "K"
-  else if (rank === "J" || rank === "Q" || rank === "K") {
+  if (rank === "J" || rank === "Q" || rank === "K") {
     return 10;
   }
 
+  const num = Number(rank);
   // if card is a number card and card is bigger than 2 and less than 10 ("2" to "10"), should return its numerical value
-  else if (Number(rank) >= 2 && Number(rank) <= 10) {
-    return Number(rank);
+  if (rank !== String(num) || num < 2 || num > 10) {
+    throw new Error("Error invalid card");
   }
-  throw new Error("Error invalid card");
+  return num;
 }
 
 // The line below allows us to load the getCardValue function into tests in other files.
@@ -67,14 +68,14 @@ function assertEquals(actualOutput, targetOutput) {
 
 // TODO: Write tests to cover all outcomes, including throwing errors for invalid cards.
 // Examples:
-assertEquals(getCardValue("9♠"), 9);
+// assertEquals(getCardValue("9♠"), 9);
 
 // Handling invalid cards
-try {
-  getCardValue("invalid");
+// try {
+//   getCardValue("invalid");
 
-  // This line will not be reached if an error is thrown as expected
-  console.error("Error was not thrown for invalid card");
-} catch (e) {}
+//   // This line will not be reached if an error is thrown as expected
+//   console.error("Error was not thrown for invalid card");
+// } catch (e) {}
 
 // What other invalid card cases can you think of?
