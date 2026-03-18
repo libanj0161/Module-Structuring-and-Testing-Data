@@ -37,11 +37,6 @@ function getAngleType(angle) {
   else if (angle > 180 && angle < 360) {
     return "Reflex angle";
   }
-
-  // if it is 360 then it is a full rotation
-  else if (angle === 360) {
-    return "Full rotation";
-  }
   // everything greater than 360 rand less than 0 return invalid angle
   else {
     return "Invalid angle";

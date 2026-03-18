@@ -24,30 +24,33 @@
 function getCardValue(card) {
   const suits = ["♠", "♥", "♦", "♣"]; // valid card suits
 
-  const suit = card.slice(-1); // gives me the last character
-  const rank = card.slice(0, -1); // gets beginning character up to (not including) the last character
+  let suit = "";
+  let rank = card;
 
-  if (!suits.includes(suit)) {
+  if (card.length > 1) {
+    suit = card.slice(-1); // gives me the last character and saves it in the suit variable.
+    rank = card.slice(0, -1); // gets beginning character up to (not including) the last character and saves it in the rank variable.
+  }
+
+  if (suit && !suits.includes(suit)) {
     throw new Error("Error invalid card");
   }
-  // TODO: Implement this function
 
   // if card is an ace return 11
-  if (card === "A♠") {
+  if (rank === "A") {
     return 11;
   }
 
   // if card is face "J", "Q", "K"
-  else if (card === "J♣" || card === "Q♦" || card === "K♥") {
+  else if (rank === "J" || rank === "Q" || rank === "K") {
     return 10;
   }
 
   // if card is a number card and card is bigger than 2 and less than 10 ("2" to "10"), should return its numerical value
-  else if (Number(card) >= 2 && Number(card) <= 10) {
-    return Number(card);
-  } else {
-    throw new Error("Error invalid card");
+  else if (Number(rank) >= 2 && Number(rank) <= 10) {
+    return Number(rank);
   }
+  throw new Error("Error invalid card");
 }
 
 // The line below allows us to load the getCardValue function into tests in other files.
