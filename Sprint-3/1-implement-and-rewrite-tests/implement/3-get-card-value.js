@@ -24,17 +24,12 @@
 function getCardValue(card) {
   const suits = ["♠", "♥", "♦", "♣"]; // valid card suits
 
-  let suit = "";
-  let rank = card;
-
-  if (suits.includes(card.slice(-1))) {
-    suit = card.slice(-1); // gives me the last character and saves it in the suit variable.
-    rank = card.slice(0, -1); // gets beginning character up to (not including) the last character and saves it in the rank variable.
-  }
-
-  if (suit && !suits.includes(suit)) {
+  // must have a valid suit
+  if (!suits.includes(card.slice(-1))) {
     throw new Error("Error invalid card");
   }
+
+  const rank = card.slice(0, -1); // gets beginning character up to (not including) the last character and saves it in the rank variable.
 
   // if card is an ace return 11
   if (rank === "A") {

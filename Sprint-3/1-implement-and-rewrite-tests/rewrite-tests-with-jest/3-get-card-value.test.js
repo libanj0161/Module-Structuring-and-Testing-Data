@@ -28,7 +28,7 @@ test(`Should return 10 when given an face card`, () => {
 });
 // Case 3: Number Cards (2-10)
 test(`Should return numerical value when given an number card`, () => {
-  expect(getCardValue("5")).toEqual(5);
+  expect(() => getCardValue("5")).toThrow("Error invalid card");
 });
 
 test(`Should return error if the card string is invalid`, () => {
