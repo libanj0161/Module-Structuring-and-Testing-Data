@@ -48,7 +48,7 @@ function getCardValue(card) {
 
   const num = Number(rank);
   // if card is a number card and card is bigger than 2 and less than 10 ("2" to "10"), should return its numerical value
-  if (rank !== String(num) || num < 2 || num > 10) {
+  if (!Number.isInteger(num) || rank !== String(num) || num < 2 || num > 10) {
     throw new Error("Error invalid card");
   }
   return num;
